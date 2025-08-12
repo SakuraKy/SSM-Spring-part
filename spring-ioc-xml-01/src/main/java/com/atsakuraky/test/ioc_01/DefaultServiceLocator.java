@@ -1,8 +1,8 @@
-package com.atsakuraky.ioc_01;
+package com.atsakuraky.test.ioc_01;
 
 public class DefaultServiceLocator {
 
-  private static ClientServiceImpl clientService = new ClientServiceImpl();
+  private static ClientService clientService = new ClientService();
 
   public ClientService createClientServiceInstance() {
     return clientService;
