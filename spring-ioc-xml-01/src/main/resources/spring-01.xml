@@ -22,4 +22,11 @@
     <bean id="clientService" class="com.atsakuraky.ioc_01.ClientService"
           factory-method="createInstance" />
         <!-- 通过工厂方法创建的组件对象，默认也是单例模式 -->
+
+    <!-- 非静态工厂如何声明ioc配置 -->
+    <!-- 配置工厂类的组件信息 -->
+    <bean id="defaultServiceLocator" class="com.atsakuraky.ioc_01.DefaultServiceLocator" />
+    <!-- 通过指定非静态工厂对象和方法名来配置生成的ioc信息 -->
+    <bean id="clientService2" factory-bean="defaultServiceLocator" factory-method="createClientServiceInstance"/>
+
 </beans>
