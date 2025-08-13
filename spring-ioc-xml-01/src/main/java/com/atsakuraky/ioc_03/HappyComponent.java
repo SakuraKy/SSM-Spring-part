@@ -1,4 +1,4 @@
-package com.atsakuraky.test.ioc_03;
+package com.atsakuraky.ioc_03;
 
 
 public class HappyComponent {

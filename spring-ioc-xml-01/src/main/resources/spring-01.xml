@@ -10,8 +10,8 @@
         讲一个组件类 -声明两个组件信息，默认为单例模式，会实例化两个组件对象
         相当于new了2次
     -->
-    <bean id="happyComponent1" class="com.atsakuraky.test.ioc_01.HappyComponent"/>
-    <bean id="happyComponent2" class="com.atsakuraky.test.ioc_01.HappyComponent"/>
+    <bean id="happyComponent1" class="com.atsakuraky.ioc_01.HappyComponent"/>
+    <bean id="happyComponent2" class="com.atsakuraky.ioc_01.HappyComponent"/>
 
     <!-- 静态工厂类如何声明工厂方法进行ioc的配置
         <bean
@@ -19,13 +19,13 @@
             class:代表组件的权限定符
             factory-method:代表工厂方法的名称
     -->
-    <bean id="clientService" class="com.atsakuraky.test.ioc_01.ClientService"
+    <bean id="clientService" class="com.atsakuraky.ioc_01.ClientService"
           factory-method="createInstance" />
         <!-- 通过工厂方法创建的组件对象，默认也是单例模式 -->
 
     <!-- 非静态工厂如何声明ioc配置 -->
     <!-- 配置工厂类的组件信息 -->
-    <bean id="defaultServiceLocator" class="com.atsakuraky.test.ioc_01.DefaultServiceLocator" />
+    <bean id="defaultServiceLocator" class="com.atsakuraky.ioc_01.DefaultServiceLocator" />
     <!-- 通过指定非静态工厂对象和方法名来配置生成的ioc信息 -->
     <bean id="clientService2" factory-bean="defaultServiceLocator" factory-method="createClientServiceInstance"/>
 

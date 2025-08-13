@@ -1,4 +1,4 @@
-package com.atsakuraky.test.ioc_01;
+package com.atsakuraky.ioc_01;
 
 public class DefaultServiceLocator {
 

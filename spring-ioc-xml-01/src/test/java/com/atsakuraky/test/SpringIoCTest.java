@@ -1,6 +1,6 @@
 package com.atsakuraky.test;
 
-import com.atsakuraky.test.ioc_03.HappyComponent;
+import com.atsakuraky.ioc_03.HappyComponent;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -46,5 +46,17 @@ public class SpringIoCTest {
         System.out.println(happyComponent == happyComponent1); // true
         System.out.println(happyComponent1 == happyComponent2); // true
         System.out.println(happyComponent2 == happyComponent); // true
+    }
+
+    /**
+     * 测试ioc配置和销毁方法的触发
+     */
+    @Test
+    public void test_04() {
+        //1.创建容器
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-04.xml");
+        //2.正常结束ioc容器
+        applicationContext.close();
+
     }
 }

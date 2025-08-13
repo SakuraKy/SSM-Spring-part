@@ -4,6 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <!--  声明组件信息 ioc容器读取后 实例化对象 -->
-    <bean id="happyComponent" class="com.atsakuraky.ioc_03.HappyComponent" />
+
+    <!--
+    init-method:初始化方法
+    destroy-method:销毁方法
+     -->
+    <bean id="javaBean" class="com.atsakuraky.ioc_04.JavaBean" init-method="init" destroy-method="destroy"/>
+
+
 </beans>
