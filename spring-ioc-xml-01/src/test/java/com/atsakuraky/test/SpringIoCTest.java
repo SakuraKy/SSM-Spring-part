@@ -1,6 +1,7 @@
 package com.atsakuraky.test;
 
 import com.atsakuraky.ioc_03.HappyComponent;
+import com.atsakuraky.ioc_04.JavaBean2;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -55,8 +56,18 @@ public class SpringIoCTest {
     public void test_04() {
         //1.创建容器
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-04.xml");
+
+
+        //证明默认值是不是单例
+        JavaBean2 Bean = (JavaBean2) applicationContext.getBean("javaBean2");
+        JavaBean2 Bean1 = (JavaBean2) applicationContext.getBean("javaBean2");
+        System.out.println(Bean == Bean1); // true
+
+
         //2.正常结束ioc容器
         applicationContext.close();
+
+
 
     }
 }

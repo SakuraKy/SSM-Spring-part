@@ -12,4 +12,7 @@
     <bean id="javaBean" class="com.atsakuraky.ioc_04.JavaBean" init-method="init" destroy-method="destroy"/>
 
 
+    <!-- 声明一个bean信息，默认就是单例模式 bean -> beanDefinition -> 组件对象 -->
+    <bean id="javaBean2" class="com.atsakuraky.ioc_04.JavaBean2" />
+
 </beans>
