@@ -1,6 +1,7 @@
 package com.atsakuraky.test;
 
 import com.atsakuraky.ioc_03.HappyComponent;
+import com.atsakuraky.ioc_04.JavaBean;
 import com.atsakuraky.ioc_04.JavaBean2;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -65,6 +66,30 @@ public class SpringIoCTest {
 
 
         //2.正常结束ioc容器
+        applicationContext.close();
+
+
+
+    }
+
+
+    /**
+     * 读取使用factoryBean工厂配置的组件对象
+     */
+    @Test
+    public void test_05() {
+        //1.创建容器
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-05.xml");
+
+        //2.读取组件
+        com.atsakuraky.ioc_05.JavaBean javaBean = applicationContext.getBean("javaBean", com.atsakuraky.ioc_05.JavaBean.class);
+        //TODO:FactoryBean工厂也会加入到ioc容器，名字:&id
+        Object bean = applicationContext.getBean("&javaBean");
+        System.out.println("javaBean:" + javaBean);
+        System.out.println("bean:" + bean);
+
+
+        //3.正常结束ioc容器
         applicationContext.close();
 
 
