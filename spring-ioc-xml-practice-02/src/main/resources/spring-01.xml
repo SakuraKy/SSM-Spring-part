@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 读取外部配置文件 .properties -> value = ${key} -->
+    <!-- 这样做会更加安全 -->
     <context:property-placeholder location="classpath:jdbc.properties" />
 
 
