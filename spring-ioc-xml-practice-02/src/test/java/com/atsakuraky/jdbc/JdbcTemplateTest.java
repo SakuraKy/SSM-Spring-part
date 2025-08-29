@@ -1,6 +1,7 @@
 package com.atsakuraky.jdbc;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.atsakuraky.controller.StudentController;
 import com.atsakuraky.pojo.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -41,8 +42,8 @@ public class JdbcTemplateTest {
 
 
     @Test
-    /**
-     * 通过ioc容器读取配置的JdbcTemplate组件
+    /*
+      通过ioc容器读取配置的JdbcTemplate组件
      */
     public void testForIoc() {
         //1.创建ioc容器
@@ -92,6 +93,28 @@ public class JdbcTemplateTest {
         List<Student> studentList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Student>(Student.class));
         //TODO: BeanPropertyRowMapper帮助我们自动映射列和属性值，要求列名和属性名一致，不一致请别名
         System.out.println("studentList = " + studentList);
+
+    }
+
+
+    /**
+     * 从ioc容器中获取controller调用dao查询所有学生,内部都是ioc容器组装
+     */
+    @Test
+    public void testQueryAll() {
+        //1.创建ioc容器
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-02.xml");
+
+        //2.获取组件
+
+        StudentController studentController = applicationContext.getBean(StudentController.class);
+
+
+        //3.调用方法
+        studentController.findAll();
+
+        //4.关闭容器
+        applicationContext.close();
 
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties" />
+    <!-- 配置druid连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${atsakuraky.url}"/>
+        <property name="driverClassName" value="${atsakuraky.driver}"/>
+        <property name="username" value="${atsakuraky.username}"/>
+        <property name="password" value="${atsakuraky.password}"/>
+    </bean>
+
+    <!-- jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- dao 配置 di jdbcTemplate -->
+    <bean id="studentDao" class="com.atsakuraky.dao.impl.StudentDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <!-- service 配置 di dao -->
+    <bean id="studentService" class="com.atsakuraky.pojo.impl.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+    <!-- controller 配置 di service -->
+    <bean id="studentController" class="com.atsakuraky.controller.StudentController">
+        <property name="studentService" ref="studentService"/>
+    </bean>
+
+</beans>
