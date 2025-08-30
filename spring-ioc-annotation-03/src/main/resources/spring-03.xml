@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+<!--    &lt;!&ndash;-->
+<!--    1.当入ioc容器-->
+<!--    2.di配置 xml配置方法中必须要有set方法-->
+
+
+<!--    &ndash;&gt;-->
+<!--    <bean id="userService" class="com.atsakuraky.ioc_03.UserServiceImpl"/>-->
+<!--    <bean id="" class="com.atsakuraky.ioc_03.UserController">-->
+<!--        <property name="userService" ref="userService"/>-->
+<!--    </bean>-->
+
+
+    <context:component-scan base-package="com.atsakuraky.ioc_03"/>
+
+
+</beans>
