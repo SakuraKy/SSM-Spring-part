@@ -64,4 +64,13 @@ public class SpringIocTest {
 
         //优化点：@Autowired(required = true)+@Qualifier(value = "UserServiceImpl") = @Resource(name = "UserServiceImpl")既可以自动装配又可以指定bean名称
     }
+
+    @Test
+    public void testIoc_04() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-04.xml");
+
+        com.atsakuraky.ioc_04.JavaBean bean = applicationContext.getBean(com.atsakuraky.ioc_04.JavaBean.class);
+
+        System.out.println("bean:" + bean);
+    }
 }
