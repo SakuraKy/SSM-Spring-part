@@ -15,6 +15,7 @@
         <module>spring-ioc-annotation-practiec-05</module>
         <module>spring-ioc-java-06</module>
         <module>spring-java-practice-07</module>
+        <module>spring-test-annoctation-08</module>
     </modules>
 
     <properties>
@@ -46,6 +47,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>6.2.5</version>
         </dependency>
 
 
