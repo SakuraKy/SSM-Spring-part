@@ -1,6 +1,8 @@
 package com.atsakuraky.test;
 
 import com.atsakuraky.config.JavaConfiguration;
+import com.atsakuraky.config.JavaConfigurationA;
+import com.atsakuraky.config.JavaConfigurationB;
 import com.atsakuraky.ioc_01.StudentController;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -22,5 +24,10 @@ public class SpringIoCTest {
 
         StudentController bean = applicationContext.getBean(StudentController.class);
         System.out.println("bean = "+ bean);
+    }
+
+    @Test
+    public void test_04() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(JavaConfigurationA.class);
     }
 }
