@@ -14,6 +14,7 @@
         <module>spring-ioc-annotation-03</module>
         <module>spring-ioc-annotation-practiec-05</module>
         <module>spring-ioc-java-06</module>
+        <module>spring-java-practice-07</module>
     </modules>
 
     <properties>
