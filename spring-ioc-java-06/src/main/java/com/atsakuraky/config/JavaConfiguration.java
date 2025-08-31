@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
 
 /*
 java的配置类，替代xml配置文件
@@ -41,8 +44,23 @@ public class JavaConfiguration {
     方法体可以自定义实现过程
     最重要的一步：在方法上添加注解@bean 会真正让配置类方法创建的组件存储到ioc容器中
 
+
+
+    问题一：beanName的问题
+        默认： 方法名
+        指定： name/value属性起名，覆盖方法名
+    问题二：周期方法如何指定
+        原有注解方案：PostConstruct/PreDestroy
+        bean注解属性： initMethod/destroyMethod
+    问题三：作用域
+        和以前一样@Scope注解，默认单例
+    问题四：如何引用其他ioc组件
+        1.直接调用对方的bean方法
+        2.直接形参变量进行引用，要求必须有对应的组件，如果有多个，形参名 = 组件id标识
+
+
      */
-    @Bean
+    @Bean(name = "dataSource") //第三方bean标签
     public DruidDataSource dataSource(){
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driver);
@@ -50,5 +68,26 @@ public class JavaConfiguration {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
+    @Bean
+    public JdbcTemplate jdbcTemplate(){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+        //需要DataSource组件 需要ioc容器的其他组件
+        //方案一：如果其他组件也是@Bean方法，可以直接调用|从ioc容器获取组件
+
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
+
+    }
+    @Bean
+    public JdbcTemplate jdbcTemplate2(DataSource dataSource){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
+        //需要DataSource组件 需要ioc容器的其他组件
+        //方案二：形参列表声明想要的组件类型，可以是一个也可以是多个 ioc容器也会注入
+        //如果没有：形参变量注入，要求必须有对应的类型组件，如果没有则抛出异常
+        //如果有多个：可以使用形参名称等同于对应的bean的id
+        jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate;
+
     }
 }
