@@ -53,6 +53,29 @@ public class LogAdvice {
     三、
     配置切点表达式[选中插入方法的    切点]
     "execution(* com.atsakuraky.service.impl.*.*(..))"
+    固定语法：execution(切点表达式[1,2,3,4,5(6)])
+    1.访问修饰符
+        public/private
+    2.方法的返回参数类型
+        String/int/void/...
+    如果不考虑访问修饰符和返回值类型，可以使用*代替[如果不考虑，则两个都不考虑]
+    3.包的位置
+        具体包：com.atsakuraky.service.impl
+        单层模糊：com.atsakuraky.service.*
+        多层模糊：com.atsakuraky.service..*  .. 任意层的模糊[细节：..不能开头，但可以*..impl]
+    4.类名
+        具体：CalculatorPureImpl
+        模糊：*
+        部分模糊：*Impl
+    5.方法名:方法和类名一致
+    6.参数列表
+        没有参数：()
+        有具体参数：(int,String)
+        模糊参数：(..)
+        部分模糊：(int..)int后面无所谓
+                   例子：(..int)最后一个参数是int
+                         (String..int)
+
      */
 
     @Before("execution(* com.atsakuraky.service.impl.*.*(..))")
