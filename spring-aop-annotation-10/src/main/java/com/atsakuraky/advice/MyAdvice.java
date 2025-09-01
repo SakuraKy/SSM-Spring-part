@@ -41,17 +41,17 @@ public class MyAdvice {
         System.out.println("MyAdvice...before...");
     }
 
-    @AfterReturning(value = "execution(* com.atsakuraky.service.impl.*.*(..))",returning = "result")
+    @AfterReturning(value = "com.atsakuraky.pointcut.MyPointCut.myPc()",returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result){
         System.out.println("MyAdvice...end...");
     }
 
-    @After("execution(* com.atsakuraky.service.impl.*.*(..))")
+    @After("com.atsakuraky.pointcut.MyPointCut.myPc()")
     public void after(){
 
     }
 
-    @AfterThrowing(value = "execution(* com.atsakuraky.service.impl.*.*(..))",throwing = "throwable")
+    @AfterThrowing(value = "com.atsakuraky.pointcut.MyPointCut.myPc()",throwing = "throwable")
     public void afterThrowing(JoinPoint joinPoint,Throwable throwable){
 
     }

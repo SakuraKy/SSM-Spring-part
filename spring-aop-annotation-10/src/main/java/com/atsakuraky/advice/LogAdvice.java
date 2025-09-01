@@ -1,10 +1,7 @@
 package com.atsakuraky.advice;
 
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /*
@@ -78,15 +75,29 @@ public class LogAdvice {
 
      */
 
-    @Before("execution(* com.atsakuraky.service.impl.*.*(..))")
+    /*
+    ToDo:切点表达式的提取和复用
+        1.当前类中提取
+        定以一个空方法
+        注解@Pointcut("切点表达式")
+        增强注解中引用切点表达式的方法即可  直接调用方法
+        2.创建一个存储切点的类
+        单独维护切点表达式
+        其他类的切点方法 类的全限定符.方法名()
+     */
+
+
+
+
+    @Before("com.atsakuraky.pointcut.MyPointCut.pc()")
     public void start(){
         System.out.println("LogAdvice...start...");
     }
-    @After("execution(* com.atsakuraky.service.impl.*.*(..))")
+    @After("com.atsakuraky.pointcut.MyPointCut.pc()")
     public void after(){
         System.out.println("LogAdvice...after...");
     }
-    @AfterThrowing("execution(* com.atsakuraky.service.impl.*.*(..))")
+    @AfterThrowing("com.atsakuraky.pointcut.MyPointCut.pc()")
     public void error(){
         System.out.println("LogAdvice...error...");
     }
