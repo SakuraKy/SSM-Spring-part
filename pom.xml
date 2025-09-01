@@ -17,6 +17,7 @@
         <module>spring-java-practice-07</module>
         <module>spring-test-annoctation-08</module>
         <module>spring-aop-annocation-09</module>
+        <module>spring-aop-annotation-10</module>
     </modules>
 
     <properties>
@@ -54,6 +55,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>6.2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>6.1.6</version>
         </dependency>
 
 
