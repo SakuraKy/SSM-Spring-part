@@ -4,10 +4,12 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
+@Order(10)//优先级越高值越小
 public class TxAdvice {
 
     @Before("com.atsakuraky.pointcut.MyPointCut.pc()")

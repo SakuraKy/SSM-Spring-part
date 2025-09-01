@@ -3,6 +3,7 @@ package com.atsakuraky.advice;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +17,7 @@ public class TxAroundAdvice {
      */
 
     @Around("com.atsakuraky.pointcut.MyPointCut.pc()")
+    @Order(9)
     public Object transaction(ProceedingJoinPoint joinPoint) {
 
         //保证目标方法执行
