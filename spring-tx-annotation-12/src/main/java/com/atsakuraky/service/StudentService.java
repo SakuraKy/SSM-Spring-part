@@ -26,11 +26,22 @@ public class StudentService {
          查询方法可以通过再次添加注解，设置为只读模式
 
 
+2.超时时间
+  默认：int timeout() default -1;  永远不超时
+  设置：timeout = 时间（秒） 超过时间就会回滚事务和释放异常
+  如果类上设置事务属性，方法也设置事务注解！方法会不会生效？
+  不会生效，类上设置的事务属性会覆盖方法上的事务属性
+
      */
-    @Transactional
+    @Transactional(readOnly = false,timeout = 3)
     public void changeInfo(){
         studentDao.updateAgeById(100,1);
         System.out.println("-----------");
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         studentDao.updateNameById("test1",1);
     }
 
