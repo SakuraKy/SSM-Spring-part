@@ -3,6 +3,7 @@ package com.atsakuraky.service;
 import com.atsakuraky.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileNotFoundException;
@@ -43,8 +44,14 @@ public class StudentService {
      noRollbackFor = 回滚异常范围内，控制某个异常不回滚
 
 
+4.隔离级别
+    默认：Isolation.DEFAULT  使用数据库默认的隔离级别
+    推荐设置第二个级别
+    isolation = Isolation.READ_COMMITTED
+
+
      */
-    @Transactional(readOnly = false,timeout = 3,rollbackFor = Exception.class,noRollbackFor = FileNotFoundException.class)
+    @Transactional(readOnly = false,timeout = 3,rollbackFor = Exception.class,noRollbackFor = FileNotFoundException.class,isolation = Isolation.READ_COMMITTED)
     public void changeInfo(){
         studentDao.updateAgeById(100,1);
         System.out.println("-----------");
