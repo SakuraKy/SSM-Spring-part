@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.FileNotFoundException;
+import java.lang.module.FindException;
+
 @Service
 public class StudentService {
     
@@ -32,8 +35,16 @@ public class StudentService {
   如果类上设置事务属性，方法也设置事务注解！方法会不会生效？
   不会生效，类上设置的事务属性会覆盖方法上的事务属性
 
+
+3.指定异常回滚和指定异常不会滚
+默认：指定发生运行时异常事务回滚
+     我们可以指定Exception异常来控制所有异常都回滚
+     rollbackFor = Exception.class
+     noRollbackFor = 回滚异常范围内，控制某个异常不回滚
+
+
      */
-    @Transactional(readOnly = false,timeout = 3)
+    @Transactional(readOnly = false,timeout = 3,rollbackFor = Exception.class,noRollbackFor = FileNotFoundException.class)
     public void changeInfo(){
         studentDao.updateAgeById(100,1);
         System.out.println("-----------");
