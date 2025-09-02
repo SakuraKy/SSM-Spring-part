@@ -51,6 +51,16 @@ public class StudentService {
 
 
      */
+
+
+    /*
+    声明两个独立修改数据库的事务业务方法
+    propagation = Propagation.REQUIRES 父类有事务，我们就加入到父方法的事务中
+          最终是同一个事务[比如：事务a的代码有异常进行回滚，但是事务b的代码并没有错误；在运行代码的时候，因为都是Propagation.REQUIRES所以事务b也跟着回滚了]
+    propagation = Propagation.REQUIRES_NEW 不管父方法有没有事务，我都是一个独立的事务
+          两个事务或者三个事务
+
+     */
     @Transactional(readOnly = false,timeout = 3,rollbackFor = Exception.class,noRollbackFor = FileNotFoundException.class,isolation = Isolation.READ_COMMITTED)
     public void changeInfo(){
         studentDao.updateAgeById(100,1);
