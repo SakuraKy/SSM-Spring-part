@@ -9,7 +9,7 @@
     <context:component-scan base-package="com.atsakuraky"/>
 
 
-    <!-- 第三方的类依然使用bean标签配置 -->
+    <!-- 第三方的类依然使用bean标签配置  -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- new DruidDataSource  -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
