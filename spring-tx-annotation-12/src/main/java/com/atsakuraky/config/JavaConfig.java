@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 @ComponentScan("com.atsakuraky")
 @PropertySource("classpath:jdbc.properties")
 @EnableAspectJAutoProxy  //开启aspectJ注解的支持
-@EnableTransactionManagement  //开启事务注解的支持
+@EnableTransactionManagement  // 开启事务注解的支持
 public class JavaConfig {
 
     @Value("${atsakuraky.driver}")
