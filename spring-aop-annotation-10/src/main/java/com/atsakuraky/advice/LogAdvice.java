@@ -65,6 +65,7 @@ public class LogAdvice {
         模糊：*
         部分模糊：*Impl
     5.方法名:方法和类名一致
+
     6.参数列表
         没有参数：()
         有具体参数：(int,String)
